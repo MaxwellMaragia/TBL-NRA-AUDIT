@@ -3,7 +3,7 @@ Feature: [SUC:21-01] Maintain Audit Selection Risk Bands
   Background:
     Given User navigates to the login page
     When Enters the username "tripsuser" and password "Passw0rd" to login
-    Then User should be logged in
+#    Then User should be logged in
     Then Navigate to audit > Mantain risk bands
 
     @SUC:21-01 @UAT_M8-21-01-01 @backoffice

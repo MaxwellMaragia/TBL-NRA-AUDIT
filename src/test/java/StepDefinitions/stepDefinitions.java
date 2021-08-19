@@ -43,15 +43,13 @@ import io.cucumber.java.en.When;
 import io.cucumber.junit.Cucumber;
 
 
-
-
 @RunWith(Cucumber.class)
-public class stepDefinitions extends BaseClass  {
+public class stepDefinitions extends BaseClass {
     public Properties Pro;
     public WebDriverWait five;
-    public WebDriverWait ten ;
+    public WebDriverWait ten;
     public WebDriverWait fifteen;
-    public WebDriverWait twenty ;
+    public WebDriverWait twenty;
     public WebDriverWait twentyfive;
     public WebDriverWait thirty;
     public WebDriverWait thirtyfive;
@@ -69,7 +67,6 @@ public class stepDefinitions extends BaseClass  {
     public WebDriverWait ninetyfive;
     public WebDriverWait onehundred;
     public WebDriverWait twohundred;
-
 
 
     public static sharedatastep sharedata;
@@ -157,6 +154,11 @@ public class stepDefinitions extends BaseClass  {
         driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a/span")).click();
     }
 
+    @And("click on audit application")
+    public void clickOnAuditApplication() {
+        twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("tbg_auditapplication"))).click();
+    }
+
     @And("^click on Queues$")
     public void click_on_revenue_collection_application() throws Throwable {
         driver.findElement(By.xpath("//*[text()='Queues']")).click();
@@ -187,8 +189,7 @@ public class stepDefinitions extends BaseClass  {
     @Then("^switch to frame1$")
     public void switch_to_frame1() throws Throwable {
         driver.switchTo().defaultContent();
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        WebElement specificframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID1"))));
+        WebElement specificframe = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID1"))));
         driver.switchTo().frame(specificframe);
         Thread.sleep(3000);
 
@@ -202,7 +203,7 @@ public class stepDefinitions extends BaseClass  {
         search.clear();
         Thread.sleep(2000);
 
-        //   search.sendKeys("*AV/000000875/2021");
+        //search.sendKeys("*AV/000033271/2021");
         search.sendKeys("*"+sharedatastep.AUD_CRMARN);
         Thread.sleep(2000);
         search.sendKeys(Keys.ENTER);
@@ -212,6 +213,7 @@ public class stepDefinitions extends BaseClass  {
 
     @And("^picks the audit case$")
     public void picks_the_audit_case() throws Throwable {
+        Thread.sleep(4000);
         WebElement pickCheckBox = driver.findElement(By.xpath("//input[@type='checkbox']"));
 
         Actions actions = new Actions(driver);
@@ -223,20 +225,27 @@ public class stepDefinitions extends BaseClass  {
 
     @And("^click assign button$")
     public void click_assign_button() throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 50);
-        WebElement assignDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("moreCommands")));
-        assignDropdown.click();
+        WebDriverWait wait = new WebDriverWait(driver, 60);
+        WebElement assignDropdown = sixty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()=' Assign ']")));
+        Actions actions = new Actions(driver);
+        actions.doubleClick(assignDropdown).perform();
 
-        WebElement assignButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("queueitem|NoRelationship|HomePageGrid|tbg.Mscrm.HomepageGrid.queueitem.Assign")));
-        assignButton.click();
-    }
-    @And("^click pick button$")
-    public void click_pick_button() throws Throwable {
-
-        WebDriverWait wait = new WebDriverWait(driver, 50);
 
 //        WebElement assignDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("moreCommands")));
 //        assignDropdown.click();
+//        Thread.sleep(3000);
+//        WebElement assignButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("queueitem|NoRelationship|HomePageGrid|tbg.Mscrm.HomepageGrid.queueitem.Assign")));
+//        assignButton.click();
+
+
+    }
+
+    @And("^click pick button$")
+    public void click_pick_button() throws Throwable {
+
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement assignDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("moreCommands")));
+        assignDropdown.click();
 
         WebElement pickButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("queueitem|NoRelationship|HomePageGrid|tbg.queueitem.HomepageGrid.Pick")));
         pickButton.click();
@@ -252,6 +261,14 @@ public class stepDefinitions extends BaseClass  {
         WebElement pickButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("queueitem|NoRelationship|HomePageGrid|tbg.queueitem.HomepageGrid.Pick")));
         pickButton.click();
     }
+
+    @And("^pick the case$")
+    public void pick_the_case() throws Throwable {
+        WebElement pickButton = sixty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()=' Pick ']")));
+        Actions actions = new Actions(driver);
+        actions.doubleClick(pickButton).perform();
+    }
+
 
     @Then("^Click on reference number$")
     public void click_on_reference_number() {
@@ -272,10 +289,8 @@ public class stepDefinitions extends BaseClass  {
         WebElement createAuditPlan = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"tbg_auditapplication|NoRelationship|Form|tbg.tbg_auditapplication.CreateAuditPlan.Button\"]/span/a/span")));
 
 
-
         Assert.assertTrue(createAuditPlan.isDisplayed());
     }
-
 
 
     @Then("^Assign pop up is displayed$")
@@ -373,7 +388,7 @@ public class stepDefinitions extends BaseClass  {
 
     @When("^clicks create audit plan$")
     public void clicks_create_audit_plan() throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 50);
         WebElement createAuditPlan = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()=' Create Audit Plan ']")));
         createAuditPlan.click();
 
@@ -388,6 +403,7 @@ public class stepDefinitions extends BaseClass  {
         createAuditPlan.click();
 
     }
+
     @When("^clicks Create Final Audit Report$")
     public void clicks_create_final_audit_report() throws Throwable {
         Thread.sleep(500);
@@ -398,22 +414,21 @@ public class stepDefinitions extends BaseClass  {
     }
 
 
-
     @And("^verifies \"([^\"]*)\" entry fields are displayed$")
     public void verifies_something_entry_fields_are_displayed(String strArg1) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 60);
-        WebElement loadFrame = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_AuditApplicationAngular")));
+
+        WebElement loadFrame = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_AuditApplicationAngular")));
         driver.switchTo().frame(loadFrame);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        WebElement createAuditPlan = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + strArg1 + "']")));
+        WebElement createAuditPlan = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + strArg1 + "']")));
         Assert.assertTrue(createAuditPlan.isDisplayed());
 
     }
 
     @When("^selects FINAL AUDIT FINDINGS$")
     public void selects_final_audit_findings() throws Throwable {
-        WebElement auditFinding= driver.findElement(By.xpath("//*[@id=\"finalAuditReport\"]/div[5]/div/app-audit-findings/div/div[2]/div/p-table/div/div[1]/table/tbody/tr"));
+        WebElement auditFinding = driver.findElement(By.xpath("//*[@id=\"finalAuditReport\"]/div[5]/div/app-audit-findings/div/div[2]/div/p-table/div/div[1]/table/tbody/tr"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", auditFinding);
         Thread.sleep(500);
         auditFinding.click();
@@ -421,8 +436,8 @@ public class stepDefinitions extends BaseClass  {
 
     @When("^selects ASSESSMENT DETAILS$")
     public void selects_assessment_details() throws Throwable {
-        Actions action=new Actions(driver);
-        WebElement assesmentDetails= driver.findElement(By.xpath("//*[@id=\"finalAuditReport\"]/div[6]/div/div/div[2]/tb-dropdown/div/div[2]/div/p-dropdown/div/label"));
+        Actions action = new Actions(driver);
+        WebElement assesmentDetails = driver.findElement(By.xpath("//*[@id=\"finalAuditReport\"]/div[6]/div/div/div[2]/tb-dropdown/div/div[2]/div/p-dropdown/div/label"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", assesmentDetails);
         Thread.sleep(500);
         assesmentDetails.click();
@@ -604,7 +619,7 @@ public class stepDefinitions extends BaseClass  {
 
     @And("^clicks ok on update Info$")
     public void clicks_ok_on_update_info() throws Throwable {
-            WebElement okButton = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-audit-finding/div/form/div[2]/div/div/button[1]"));
+        WebElement okButton = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-audit-finding/div/form/div[2]/div/div/button[1]"));
         okButton.click();
     }
 
@@ -616,7 +631,7 @@ public class stepDefinitions extends BaseClass  {
     }
 
     @And("^enters AUDIT SCOPE METHODOLOGY$")
-    public void enters_audit_scope_methodology(DataTable auditScopeTable ) throws Throwable {
+    public void enters_audit_scope_methodology(DataTable auditScopeTable) throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 60);
 
         List<List<String>> data = auditScopeTable.asLists();
@@ -694,7 +709,7 @@ public class stepDefinitions extends BaseClass  {
 
     @And("^Clicks submit Preliminary Audit Finding button$")
     public void clicks_submit_preliminary_audit_finding_button() throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
 
         WebElement submitButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-pre-audit-finding/div/div/form/div[9]/div/div/button")));
 
@@ -723,26 +738,27 @@ public class stepDefinitions extends BaseClass  {
     @Then("^Audit status should be \"([^\"]*)\"$")
     public void application_account_adjustment_status_should_be_something(String Status) throws Throwable {
         driver.switchTo().frame("contentIFrame1");
-        WebDriverWait wait = new WebDriverWait(driver,30);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         Thread.sleep(3000);
-        String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='"+Status+"']"))).getText();
-        Assert.assertEquals(Status,text);
+        String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + Status + "']"))).getText();
+        Assert.assertEquals(Status, text);
         Thread.sleep(2000);
+        driver.switchTo().defaultContent();
     }
 
     @And("^clicks Approve from the dropdown$")
     public void clicks_Approve_from_the_dropdown() throws Throwable {
 
-        Actions action=new Actions(driver);
-        WebElement Outcome=driver.findElement(By.id(Pro.getProperty("Taxpayer_Accounting_Approval_Outcome_ID")));
-        WebElement hasLoaded= driver.findElement(By.id("header_process_tbg_approvaloutcome_lock"));
+        Actions action = new Actions(driver);
+        WebElement Outcome = driver.findElement(By.id(Pro.getProperty("Taxpayer_Accounting_Approval_Outcome_ID")));
+        WebElement hasLoaded = driver.findElement(By.id("header_process_tbg_approvaloutcome_lock"));
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Thread.sleep(7000);
-        if(hasLoaded.isDisplayed()) {
+        if (hasLoaded.isDisplayed()) {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             Thread.sleep(5000);
-        }else {
+        } else {
             action.doubleClick(Outcome).build().perform();
             Outcome.click();
             action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
@@ -753,23 +769,22 @@ public class stepDefinitions extends BaseClass  {
     @And("^clicks reject from the dropdown$")
     public void clicks_discontinue_from_the_dropdown() throws Throwable {
 
-        Actions action=new Actions(driver);
-        WebElement Outcome=driver.findElement(By.id(Pro.getProperty("Taxpayer_Accounting_Approval_Outcome_ID")));
-        WebElement hasLoaded= driver.findElement(By.id("header_process_tbg_approvaloutcome_lock"));
+        Actions action = new Actions(driver);
+        WebElement Outcome = driver.findElement(By.id(Pro.getProperty("Taxpayer_Accounting_Approval_Outcome_ID")));
+        WebElement hasLoaded = driver.findElement(By.id("header_process_tbg_approvaloutcome_lock"));
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         Thread.sleep(7000);
-        if(hasLoaded.isDisplayed()) {
+        if (hasLoaded.isDisplayed()) {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             Thread.sleep(5000);
-        }else {
+        } else {
             action.doubleClick(Outcome).build().perform();
             Outcome.click();
             action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
         }
 
     }
-
 
 
     @Then("^Click on Save button$")
@@ -826,13 +841,10 @@ public class stepDefinitions extends BaseClass  {
         WebElement estStartDate = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-audit-case-plan/div/form/div[1]/app-audit-plan-particulars/div/form/div[2]/div[3]/tb-date-picker[1]/div/div[2]/div/p-calendar/span/input"));
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", estStartDate);
         Thread.sleep(2000);
-        String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + strArg1 +"']"))).getText();
-        if(text.contains(strArg1))
-        {
-            System.out.println("Text Verified and"+strArg1);
-        }
-        else
-        {
+        String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + strArg1 + "']"))).getText();
+        if (text.contains(strArg1)) {
+            System.out.println("Text Verified and" + strArg1);
+        } else {
             System.out.println("Text Not Verfied and failed");
         }
         Thread.sleep(2000);
@@ -847,16 +859,14 @@ public class stepDefinitions extends BaseClass  {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-pre-audit-finding/div/div/form/div[8]/div/div/tb-input-text-area/div/div[2]/control-messages/div/div"))).getText();
-        if(text.contains(strArg1))
-        {
-            System.out.println("Text Verified and"+strArg1);
-        }
-        else
-        {
+        if (text.contains(strArg1)) {
+            System.out.println("Text Verified and" + strArg1);
+        } else {
             System.out.println("Text Not Verfied and failed");
         }
         Thread.sleep(2000);
     }
+
     @Then("^final audit validation error is displayed \"([^\"]*)\"$")
     public void final_audit_validation_error_is_displayed_something(String strArg1) throws Throwable {
         WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -866,12 +876,9 @@ public class stepDefinitions extends BaseClass  {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"finalAuditReport\"]/div[10]/div/div[1]/tb-input-text-area/div/div[2]/control-messages/div/div"))).getText();
-        if(text.contains(strArg1))
-        {
-            System.out.println("Text Verified and"+strArg1);
-        }
-        else
-        {
+        if (text.contains(strArg1)) {
+            System.out.println("Text Verified and" + strArg1);
+        } else {
             System.out.println("Text Not Verfied and failed");
         }
         Thread.sleep(2000);
@@ -886,12 +893,9 @@ public class stepDefinitions extends BaseClass  {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-officer-assessment/div/form/div[2]/div[3]/div[2]/tb-input-text-area/div/div[2]/control-messages/div/div"))).getText();
-        if(text.contains(strArg1))
-        {
-            System.out.println("Text Verified and"+strArg1);
-        }
-        else
-        {
+        if (text.contains(strArg1)) {
+            System.out.println("Text Verified and" + strArg1);
+        } else {
             System.out.println("Text Not Verfied and failed");
         }
         Thread.sleep(2000);
@@ -904,12 +908,9 @@ public class stepDefinitions extends BaseClass  {
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement image = driver.findElement(By.id("tbg_outcomenotes_warn"));
-        if(image.isDisplayed())
-        {
-            System.out.println("Text Verified and"+strArg1);
-        }
-        else
-        {
+        if (image.isDisplayed()) {
+            System.out.println("Text Verified and" + strArg1);
+        } else {
             System.out.println("Text Not Verfied and failed");
         }
         Thread.sleep(2000);
@@ -940,9 +941,8 @@ public class stepDefinitions extends BaseClass  {
         WebElement searchButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit' and span='Search']")));
         searchButton.click();
 
-        boolean TIN= wait.until(ExpectedConditions.textToBePresentInElementValue(By.id("AuditAndVisitCaseForm:TIN"), strArg1));
+        boolean TIN = wait.until(ExpectedConditions.textToBePresentInElementValue(By.id("AuditAndVisitCaseForm:TIN"), strArg1));
         Assert.assertTrue(TIN);
-
 
 
         WebElement notesInput = driver.findElement(By.id("AuditAndVisitCaseForm:CaseNotes"));
@@ -969,7 +969,6 @@ public class stepDefinitions extends BaseClass  {
         sharedatastep.AUD_CRMARN = text.substring(42);
 
 
-
         System.out.println(sharedatastep.AUD_CRMARN);
         System.out.println("Actual ARN to be used in CRM is " + sharedatastep.AUD_CRMARN);
 
@@ -989,10 +988,10 @@ public class stepDefinitions extends BaseClass  {
         WebDriverWait wait = new WebDriverWait(driver, 200);
         WebElement frame = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_AuditApplicationAngular")));
         driver.switchTo().frame(frame);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='"+strArg1+"']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='" + strArg1 + "']")));
     }
 
-//-----------------------------------------------------Print Audit Processing Reports--------------------------------------------------------------------------------///
+    //-----------------------------------------------------Print Audit Processing Reports--------------------------------------------------------------------------------///
     @Then("^Goto reporting link$")
     public void goto_reporting_link() throws Throwable {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -1024,7 +1023,7 @@ public class stepDefinitions extends BaseClass  {
 
     @And("^Clicks on Audit Report \"([^\"]*)\"$")
     public void clicks_on_audit_report_something(String strArg1) throws Throwable {
-        driver.findElement(By.xpath("//*[text()='"+strArg1 +"']")).click();
+        driver.findElement(By.xpath("//*[text()='" + strArg1 + "']")).click();
 //        driver.findElement(By.xpath("//*[text()='"+TaxType+"']"));
     }
 
@@ -1118,8 +1117,8 @@ public class stepDefinitions extends BaseClass  {
 
     @Then("Navigate to audit > Mantain risk bands")
     public void navigateToAuditMantainRiskBands() {
-       thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Audit']"))).click();
-       thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Maintain Risk Bands']"))).click();
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Audit']"))).click();
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[span='Maintain Risk Bands']"))).click();
     }
 
     @Then("Verify fields in Mantain risk bands screen")
@@ -1196,8 +1195,8 @@ public class stepDefinitions extends BaseClass  {
 
         WebElement auditDaysField = fifteen.until(ExpectedConditions.visibilityOfElementLocated(By.id("RiskBandDetails:NumOfDaysForTheAudit_input")));
         String current = auditDaysField.getAttribute("value");
-        System.out.println("Current value is "+current);
-        int newFigure = Integer.parseInt(current)+1;
+        System.out.println("Current value is " + current);
+        int newFigure = Integer.parseInt(current) + 1;
         auditDaysField.clear();
         Thread.sleep(1000);
         auditDaysField.sendKeys(String.valueOf(newFigure));
@@ -1213,6 +1212,7 @@ public class stepDefinitions extends BaseClass  {
 
         if (successMessage.isDisplayed()) {
             System.out.println("Success message ('" + Message + "') has been displayed");
+            //AP000000481 : Audit profile details successfully saved.
             Assert.assertTrue(true);
         } else {
             Assert.fail();
@@ -1243,7 +1243,7 @@ public class stepDefinitions extends BaseClass  {
 
     @Then("Verify view risk band field is readonly")
     public void verifyViewRiskBandFieldIsReadonly() {
-        Assert.assertTrue("riskband field is disabled",!twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("RiskBandDetails:RiskBand_input"))).isEnabled());
+        Assert.assertTrue("riskband field is disabled", !twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("RiskBandDetails:RiskBand_input"))).isEnabled());
     }
 
     @Then("Click add button to add risk band")
@@ -1291,14 +1291,14 @@ public class stepDefinitions extends BaseClass  {
     @Then("fill in Turnover risk indicator details")
     public void fillInTurnoverRiskIndicatorDetails() throws InterruptedException {
 
-        WebElement currentTurnOverFromField =  twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TurnoverRiskIndicatorDetails:TurnoverTo_input")));
+        WebElement currentTurnOverFromField = twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TurnoverRiskIndicatorDetails:TurnoverTo_input")));
         String currentValue = currentTurnOverFromField.getAttribute("value");
-        System.out.println("Current value is "+currentValue);
-        int current = Integer.parseInt(currentValue.substring(0, currentValue.length() - 3).replace(",",""));
-        System.out.println("Value to update is "+current);
+        System.out.println("Current value is " + currentValue);
+        int current = Integer.parseInt(currentValue.substring(0, currentValue.length() - 3).replace(",", ""));
+        System.out.println("Value to update is " + current);
         currentTurnOverFromField.clear();
         Thread.sleep(1000);
-        currentTurnOverFromField.sendKeys(String.valueOf(current+10));
+        currentTurnOverFromField.sendKeys(String.valueOf(current + 10));
         Thread.sleep(2000);
         driver.findElement(By.id("TurnoverRiskIndicatorDetails:Ok")).click();
     }
@@ -1325,7 +1325,7 @@ public class stepDefinitions extends BaseClass  {
 
     @Then("Verify fields in risk indicator details screen are read only")
     public void verifyFieldsInRiskIndicatorDetailsScreenAreReadOnly() {
-        Assert.assertTrue("Turnover from field is disabled",!twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TurnoverRiskIndicatorDetails:TurnoverFrom_input"))).isEnabled());
+        Assert.assertTrue("Turnover from field is disabled", !twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("TurnoverRiskIndicatorDetails:TurnoverFrom_input"))).isEnabled());
     }
 
     @Then("Click ok to trigger validation check in risk band details")
@@ -1409,12 +1409,11 @@ public class stepDefinitions extends BaseClass  {
 
         String currentStatus = twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("AuditSelectionProfileDetails:ProfileStatus_label"))).getText();
         String nextStatus = "";
-        System.out.println("Current status is "+currentStatus);
-        if(currentStatus.equals("Active")){
-           nextStatus = "//li[contains(text(),'Inactive')]";
-        }
-        else if(currentStatus.equals("Inactive")){
-           nextStatus = "//li[contains(text(),'Active')]";
+        System.out.println("Current status is " + currentStatus);
+        if (currentStatus.equals("Active")) {
+            nextStatus = "//li[contains(text(),'Inactive')]";
+        } else if (currentStatus.equals("Inactive")) {
+            nextStatus = "//li[contains(text(),'Active')]";
         }
 
         driver.findElement(By.xpath("//*[@id=\"AuditSelectionProfileDetails:ProfileStatus\"]/div[3]")).click();
@@ -1427,7 +1426,7 @@ public class stepDefinitions extends BaseClass  {
     @Then("Verify no data found in table")
     public void verifyNoDataFoundInTable() {
 
-        Assert.assertTrue("",twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'No record(s) found.')]"))).isDisplayed());
+        Assert.assertTrue("", twenty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//td[contains(text(),'No record(s) found.')]"))).isDisplayed());
 
     }
 
@@ -1454,11 +1453,11 @@ public class stepDefinitions extends BaseClass  {
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RunAuditSelectionProfile:ExportPDF"))).click();
 
     }
+
     @Then("Click export as excel")
     public void clickExportAsExcel() {
         ten.until(ExpectedConditions.visibilityOfElementLocated(By.id("RunAuditSelectionProfile:ExportExcel"))).click();
     }
-
 
 
     public boolean isFileDownloaded(String downloadPath, String fileName) {
@@ -1496,7 +1495,7 @@ public class stepDefinitions extends BaseClass  {
     public void user_is_navigated_back_to_homepage_something(String url) throws Throwable {
         Thread.sleep(4000);
         String URL = driver.getCurrentUrl();
-        Assert.assertEquals(url,URL );
+        Assert.assertEquals(url, URL);
     }
 
     @Then("Navigate to audit > View visit selection report")
@@ -1525,7 +1524,7 @@ public class stepDefinitions extends BaseClass  {
     @Then("Verify same report ID {string} is displayed")
     public void verifySameReportIDIsDisplayed(String id) {
         System.out.println(twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("ViewVisitSelectionReport:reportId"))).getAttribute("value"));
-        Assert.assertTrue("Data is displayed",twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("ViewVisitSelectionReport:reportId"))).getAttribute("value").equals(id));
+        Assert.assertTrue("Data is displayed", twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("ViewVisitSelectionReport:reportId"))).getAttribute("value").equals(id));
     }
 
     @Then("Export view selection report as pdf")
@@ -1537,6 +1536,7 @@ public class stepDefinitions extends BaseClass  {
     public void exportViewSelectionReportAsExcel() {
         twenty.until(ExpectedConditions.visibilityOfElementLocated(By.id("ViewVisitSelectionReport:ExportExcel"))).click();
     }
+
 }
 
 

@@ -9,6 +9,9 @@ Feature: [SUC:21-10] Create Audit Plan
     Then switch to frame0
     And enters Audit reference number in search results
     And picks the audit case
+    And click pick button
+    Then switch to frame0
+    Then Click on reference number
     Then Audit status should be "Open"
     When clicks create audit plan
     Then switch to frame1
@@ -38,11 +41,15 @@ Feature: [SUC:21-10] Create Audit Plan
     And enters Audit reference number in search results
     And picks the audit case
     And click pick button
-    Then switch to frame0
+    Then Switch to default
+    And Click on Case management dropdown
+    And click on audit application
+    Then switch to frame1
+    And enters Audit reference number in search results
     Then Click on reference number
     Then create Create Audit Plan page is displayed
     When clicks create audit plan
-    Then switch to frame1
+    Then switch to frame0
     And verifies " 1. AUDIT PLAN PARTICULARS " entry fields are displayed
     When enters audit case plan details
       | Auditors               | TestAuditor    |
@@ -55,14 +62,14 @@ Feature: [SUC:21-10] Create Audit Plan
       | Trend Analysis         | testAnalysis   |
       | Compliance History     | testHistory    |
       | Relevant Documents     | testDocuments  |
-#    And enters AUDIT SCOPE METHODOLOGY
-#      | taxtype                             | Domestic VAT    |
-#      | Tax Period                          | 1/2020          |
-#      | Risk Area(s)                        | Airport Tax     |
-#      | Materiality                         | materialityTest |
-#      | Tests to be Conducted (Methodology) | methodologyTest |
-#      | Responsible Auditors                | testAuditors    |
-#      | Time Allocated (in days)            | 2               |
+    And enters AUDIT SCOPE METHODOLOGY
+      | taxtype                             | Domestic VAT    |
+      | Tax Period                          | 1/2020          |
+      | Risk Area(s)                        | Airport Tax     |
+      | Materiality                         | materialityTest |
+      | Tests to be Conducted (Methodology) | methodologyTest |
+      | Responsible Auditors                | testAuditors    |
+      | Time Allocated (in days)            | 2               |
     And Clicks submit audit plan button
     Then Audit status should be "Pending Audit Plan Approval"
 

@@ -9,10 +9,11 @@ Feature: [SUC:21-11] Approve Audit Plan
     Then switch to frame0
     And enters Audit reference number in search results
     And picks the audit case
-    And click pick button dropdown
+    And pick the case
     Then switch to frame0
     Then Click on reference number
     Then Audit status should be "Pending Audit Plan Approval"
+    Then switch to frame1
     And wait for plan to load "Auditors"
     Then switch to frame1
     And clicks Approve from the dropdown

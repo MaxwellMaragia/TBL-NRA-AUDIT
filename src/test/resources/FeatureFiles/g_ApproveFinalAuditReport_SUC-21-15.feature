@@ -1,6 +1,6 @@
 Feature: [SUC:21-15] Approve Final Audit Report
 
-  @UAT_M8-21-15-01 @CREATE
+  @UAT_M8-21-15-01 @CREATE @boom
   Scenario: UAT_M8-21-15-01-UAT_M8-21-15-02-Verify the Process of  Approve Final Audit Report
     Given Open CRM URL Module as "tripscrmuser7"
     And Close Popup Window
@@ -9,10 +9,11 @@ Feature: [SUC:21-15] Approve Final Audit Report
     Then switch to frame0
     And enters Audit reference number in search results
     And picks the audit case
-    And click pick button dropdown
+    And pick the case
     Then switch to frame0
     Then Click on reference number
     Then Audit status should be "Pending Final Audit Approval"
+    Then switch to frame1
     And wait for plan to load "Business Sector"
     Then switch to frame1
     And clicks Approve from the dropdown

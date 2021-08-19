@@ -3,7 +3,7 @@ Feature: [SUC:21-03] Maintain Audit Selection Profile
   Background:
     Given User navigates to the login page
     When Enters the username "tripsuser" and password "Passw0rd" to login
-    Then User should be logged in
+#    Then User should be logged in
 
 
   @SUC:21-03 @UAT_M8-21-03-01 @UAT_M8-21-03-02 @backoffice
