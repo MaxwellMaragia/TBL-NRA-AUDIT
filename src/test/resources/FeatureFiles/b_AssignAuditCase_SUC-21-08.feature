@@ -1,6 +1,6 @@
 Feature: [SUC:21-08] Assign an Audit Case
 
- @UAT_M8-21-08-01 @CREATE
+ @UAT_M8-21-08-01 @CREATE @boom
   Scenario: UAT_M8-21-08-01-UAT_M8-21-08-02-Verify the Process of Assign Audit Case
     Given Open CRM URL Module as "tripscrmuser7"
     And Close Popup Window

@@ -919,7 +919,11 @@ public class stepDefinitions extends BaseClass {
 
     @Given("^User navigates to Audit>>Create case manually$")
     public void user_navigates_to_auditcreate_case_manually() throws Throwable {
-        driver.findElement(By.xpath(Pro.getProperty("Audit_Button"))).click();
+
+        WebElement auditButton = twentyfive.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(Pro.getProperty("Audit_Button"))));
+        Thread.sleep(3000);
+        auditButton.click();
+        Thread.sleep(1500);
         driver.findElement(By.xpath(Pro.getProperty("Create_Case_Manually"))).click();
 
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);

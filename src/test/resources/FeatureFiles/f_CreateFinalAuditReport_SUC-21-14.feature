@@ -1,6 +1,6 @@
 Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessment
 
-  @UAT_M8-21-14-05 @CREATE @boom
+  @UAT_M8-21-14-05
   Scenario: UAT_M8-21-14-05-Verify the Process of  Invalid Final Audit Report
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -73,7 +73,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
       | updatedinfo | particulars |
       | testData    | testInfo    |
 
-  @UAT_M8-21-14-06 @CREATE @boom
+  @UAT_M8-21-14-06
   Scenario Outline: UAT_M8-21-16-05-Verify the Process of Validation Failed([SUC:21-16] Officer's Assessment)
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -97,7 +97,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
       | Addressee | Address |
       |           |         |
 
-  @UAT_M8-21-14-06 @CREATE @boom
+  @UAT_M8-21-14-06
 #  ([SUC:21-16] Officer's Assessment)
   Scenario Outline: UAT_M8-21-14-06-UAT_M8-21-16-01-UAT_M8-21-16-02-Verify the Process of  Officer's Assessment-Verify the Process of  Update Final Audit Report-Verify the Process of  Officer's Assessment-Verify the Process of  Maintain Officer's Assessment([SUC:21-16] Officer's Assessment)
     Given Open CRM URL Module as "tripscrmuser8"

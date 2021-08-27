@@ -31,7 +31,7 @@ Feature: [SUC:21-10] Create Audit Plan
     Then switch to frame1
     Then validation error displayed " This field can not be empty. "
 
-  @UAT_M8-21-10-02 @CREATE
+  @UAT_M8-21-10-02 @CREATE @boom
   Scenario: UAT_M8-21-10-01-UAT_M8-21-10-02-UAT_M8-21-10-04-UAT_M8-21-10-05-Verify the Process of  Create Audit Plan and submit
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
