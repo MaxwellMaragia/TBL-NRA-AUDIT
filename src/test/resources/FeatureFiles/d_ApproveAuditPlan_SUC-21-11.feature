@@ -16,11 +16,11 @@ Feature: [SUC:21-11] Approve Audit Plan
     Then switch to frame1
     And wait for plan to load "Auditors"
     Then switch to frame1
-#    And clicks Approve from the dropdown
-#    Then switch to frame1
-#    And enters manager comments "Manager test comment"
-#    And Click on Save button
-#    Then Audit status should be "Audit Plan Approved"
+    And clicks Approve from the dropdown
+    Then switch to frame1
+    And enters manager comments "Manager test comment"
+    And Click on Save button
+    Then Audit status should be "Audit Plan Approved"
 
   @UAT_M8-21-11-03
   Scenario: UAT_M8-21-11-03-Verify the Process of  Return Audit Plan for Revision

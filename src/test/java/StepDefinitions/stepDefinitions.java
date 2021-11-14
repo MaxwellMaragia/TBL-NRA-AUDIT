@@ -151,7 +151,12 @@ public class stepDefinitions extends BaseClass {
 
     @And("^Click on Case management dropdown$")
     public void click_on_case_management_dropdown() throws Throwable {
+        switch_to_frame0();
+        thirty.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Active Cases in Progress Overview')]"))).isDisplayed();
+        switchToDefault();
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@id=\"TabCS\"]/a/span")).click();
+        Thread.sleep(1000);
     }
 
     @And("click on audit application")
@@ -217,7 +222,7 @@ public class stepDefinitions extends BaseClass {
         WebElement pickCheckBox = driver.findElement(By.xpath("//input[@type='checkbox']"));
 
         Actions actions = new Actions(driver);
-        actions.doubleClick(pickCheckBox).perform();
+        actions.click(pickCheckBox).perform();
 
         driver.switchTo().defaultContent();
     }
@@ -737,8 +742,8 @@ public class stepDefinitions extends BaseClass {
 
     @Then("^Audit status should be \"([^\"]*)\"$")
     public void application_account_adjustment_status_should_be_something(String Status) throws Throwable {
-        driver.switchTo().frame("contentIFrame1");
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        driver.switchTo().frame("contentIFrame0");
+        WebDriverWait wait = new WebDriverWait(driver, 100);
         Thread.sleep(3000);
         String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + Status + "']"))).getText();
         Assert.assertEquals(Status, text);
@@ -931,7 +936,7 @@ public class stepDefinitions extends BaseClass {
 
     @And("^enters taxpayer details \"([^\"]*)\" and \"([^\"]*)\"$")
     public void enters_taxpayer_details_something_and_something(String strArg1, String strArg2) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 30);
+        WebDriverWait wait = new WebDriverWait(driver, 60);
         WebElement tinButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit' and span='Find']")));
         tinButton.click();
 
@@ -939,11 +944,12 @@ public class stepDefinitions extends BaseClass {
         //Switch to iframe to allow interaction with modal
         driver.switchTo().frame(frame);
 
-        WebElement enterTin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:accountNumber")));
+        WebElement enterTin = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("SearchForm:tin")));
         enterTin.sendKeys(strArg1);
 
         WebElement searchButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@type='submit' and span='Search']")));
         searchButton.click();
+        switchToDefault();
 
         boolean TIN = wait.until(ExpectedConditions.textToBePresentInElementValue(By.id("AuditAndVisitCaseForm:TIN"), strArg1));
         Assert.assertTrue(TIN);
