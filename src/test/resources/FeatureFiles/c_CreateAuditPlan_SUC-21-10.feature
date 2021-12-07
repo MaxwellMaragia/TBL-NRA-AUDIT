@@ -41,15 +41,11 @@ Feature: [SUC:21-10] Create Audit Plan
     And enters Audit reference number in search results
     And picks the audit case
     And click pick button
-    Then Switch to default
-    And Click on Case management dropdown
-    And click on audit application
-    Then switch to frame1
-    And enters Audit reference number in search results
+    Then switch to frame0
     Then Click on reference number
     Then create Create Audit Plan page is displayed
     When clicks create audit plan
-    Then switch to frame0
+    Then switch to frame1
     And verifies " 1. AUDIT PLAN PARTICULARS " entry fields are displayed
     When enters audit case plan details
       | Auditors               | TestAuditor    |

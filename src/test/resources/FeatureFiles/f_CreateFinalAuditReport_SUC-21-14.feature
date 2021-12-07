@@ -1,6 +1,6 @@
 Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessment
 
-  @UAT_M8-21-14-05
+  @UAT_M8-21-14-05 @CREATE
   Scenario: UAT_M8-21-14-05-Verify the Process of  Invalid Final Audit Report
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -9,7 +9,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
     Then switch to frame0
     And enters Audit reference number in search results
     And picks the audit case
-    And click pick button
+    And pick the case
     Then switch to frame0
     Then Click on reference number
     Then Audit status should be "Preliminary Audit Approved"
@@ -20,7 +20,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
     Then switch to frame1
     Then final audit validation error is displayed "This field can not be empty. "
 
-  @UAT_M8-21-14-01 @CREATE @boom
+  @UAT_M8-21-14-01 @CREATE
   Scenario: UAT_M8-21-14-01-UAT_M8-21-14-02-Verify the Process of  Create Final Audit Report
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -48,7 +48,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
     And Click on Save button
     Then Audit status should be "Reporting"
 
-  @UAT_M8-21-12-03 @CREATE--
+  @UAT_M8-21-12-03 @CREATE
   Scenario Outline: UAT_M8-21-14-03-Verify the Process of  Update Final Audit Report-
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -73,7 +73,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
       | updatedinfo | particulars |
       | testData    | testInfo    |
 
-  @UAT_M8-21-14-06
+  @UAT_M8-21-14-06 @CREATE
   Scenario Outline: UAT_M8-21-16-05-Verify the Process of Validation Failed([SUC:21-16] Officer's Assessment)
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -97,7 +97,7 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
       | Addressee | Address |
       |           |         |
 
-  @UAT_M8-21-14-06
+  @UAT_M8-21-14-06 @CREATE
 #  ([SUC:21-16] Officer's Assessment)
   Scenario Outline: UAT_M8-21-14-06-UAT_M8-21-16-01-UAT_M8-21-16-02-Verify the Process of  Officer's Assessment-Verify the Process of  Update Final Audit Report-Verify the Process of  Officer's Assessment-Verify the Process of  Maintain Officer's Assessment([SUC:21-16] Officer's Assessment)
     Given Open CRM URL Module as "tripscrmuser8"
@@ -120,13 +120,12 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
     And verifies " FINAL AUDIT REPORT " entry fields are displayed
     And Click on Save button
     Then Audit status should be "Reporting"
-
     Examples:
       | Addressee | Address  |
       | testData  | testInfo |
 
 
-  @UAT_M8-21-12-05 @CREATE @boom
+  @UAT_M8-21-12-05 @CREATE
   Scenario: UAT_M8-21-14-04-Verify the Process of Submit Final Audit Report
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window

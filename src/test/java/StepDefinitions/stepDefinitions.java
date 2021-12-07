@@ -184,8 +184,8 @@ public class stepDefinitions extends BaseClass {
     @Then("^switch to frame0$")
     public void switch_to_frame0() throws Throwable {
         driver.switchTo().defaultContent();
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        WebElement specificframe = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID"))));
+
+        WebElement specificframe = twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID"))));
         driver.switchTo().frame(specificframe);
         Thread.sleep(3000);
 
@@ -194,7 +194,7 @@ public class stepDefinitions extends BaseClass {
     @Then("^switch to frame1$")
     public void switch_to_frame1() throws Throwable {
         driver.switchTo().defaultContent();
-        WebElement specificframe = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID1"))));
+        WebElement specificframe = twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.id(Pro.getProperty("NextStage_Frame_ID1"))));
         driver.switchTo().frame(specificframe);
         Thread.sleep(3000);
 
@@ -206,7 +206,7 @@ public class stepDefinitions extends BaseClass {
         WebElement search = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("crmGrid_findCriteria")));
 
         search.clear();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
         //search.sendKeys("*AV/000033271/2021");
         search.sendKeys("*"+sharedatastep.AUD_CRMARN);
@@ -422,11 +422,11 @@ public class stepDefinitions extends BaseClass {
     @And("^verifies \"([^\"]*)\" entry fields are displayed$")
     public void verifies_something_entry_fields_are_displayed(String strArg1) throws Throwable {
 
-        WebElement loadFrame = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_AuditApplicationAngular")));
+        WebElement loadFrame = twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_AuditApplicationAngular")));
         driver.switchTo().frame(loadFrame);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        WebElement createAuditPlan = onehundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + strArg1 + "']")));
+        WebElement createAuditPlan = twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + strArg1 + "']")));
         Assert.assertTrue(createAuditPlan.isDisplayed());
 
     }
@@ -742,10 +742,9 @@ public class stepDefinitions extends BaseClass {
 
     @Then("^Audit status should be \"([^\"]*)\"$")
     public void application_account_adjustment_status_should_be_something(String Status) throws Throwable {
-        driver.switchTo().frame("contentIFrame0");
-        WebDriverWait wait = new WebDriverWait(driver, 100);
+        switch_to_frame1();
         Thread.sleep(3000);
-        String text = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + Status + "']"))).getText();
+        String text = twohundred.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='" + Status + "']"))).getText();
         Assert.assertEquals(Status, text);
         Thread.sleep(2000);
         driver.switchTo().defaultContent();
