@@ -31,10 +31,9 @@ import org.testng.annotations.BeforeSuite;
 
 
 public class TestRunner{
+
 	public TestRunner(sharedatastep sharedata) {
-
 		stepDefinitions.sharedata = sharedata;
-
 	}
 
 	@BeforeClass
@@ -48,7 +47,7 @@ public class TestRunner{
 		String FOLDER_TO_ZIP = "./test-output";
 		BaseClass.zip(FOLDER_TO_ZIP, Final_ZIP);
 		String output = "Tests passed = " + sharedatastep.passed + ", Tests failed = " + sharedatastep.failed;
-//		BaseClass.sendMail("Test results for NRA AUDIT module automation", output, Final_ZIP);
+		BaseClass.sendMail("Test results for NRA AUDIT module automation", output, Final_ZIP);
 	}
 }
 
