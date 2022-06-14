@@ -8,8 +8,8 @@ Feature: [SUC:21-10] Create Audit Plan
     And click on Queues
     Then switch to frame0
     And enters Audit reference number in search results
-    And picks the audit case
-    And click pick button
+#    And picks the audit case
+#    And click pick button
     Then switch to frame0
     Then Click on reference number
     Then Audit status should be "Open"
@@ -31,7 +31,7 @@ Feature: [SUC:21-10] Create Audit Plan
     Then switch to frame1
     Then validation error displayed " This field can not be empty. "
 
-  @UAT_M8-21-10-02 @CREATE @boom
+  @UAT_M8-21-10-02 @CREATE
   Scenario: UAT_M8-21-10-01-UAT_M8-21-10-02-UAT_M8-21-10-04-UAT_M8-21-10-05-Verify the Process of  Create Audit Plan and submit
     Given Open CRM URL Module as "tripscrmuser8"
     And Close Popup Window
@@ -59,7 +59,7 @@ Feature: [SUC:21-10] Create Audit Plan
       | Compliance History     | testHistory    |
       | Relevant Documents     | testDocuments  |
     And enters AUDIT SCOPE METHODOLOGY
-      | taxtype                             | Domestic VAT    |
+      | taxtype                             | Pay As You Earn |
       | Tax Period                          | 1/2020          |
       | Risk Area(s)                        | Airport Tax     |
       | Materiality                         | materialityTest |

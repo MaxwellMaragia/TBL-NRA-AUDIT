@@ -3,10 +3,10 @@ Feature: [SUC:21-02] Maintain Audit Risk Indicators
   Background:
     Given User navigates to the login page
     When Enters the username "tripsuser" and password "Passw0rd" to login
-    Then User should be logged in
+#    Then User should be logged in
     Then Navigate to audit > Mantain risk indicators
 
-  @SUC:21-02 @UAT_M8-21-02-01 @backoffice
+  @SUC:21-02 @UAT_M8-21-02-01 @backoffice @boom
   Scenario: UAT_M8-21-02-01-Verify the fields in Create Risk Indicator screen
     Then Verify fields in audit risk indicator screen
     Then Click add to open risk indicator details screen

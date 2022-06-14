@@ -1,5 +1,6 @@
 package Utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -18,6 +19,7 @@ import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.EmailException;
@@ -145,5 +147,16 @@ public class BaseClass {
 		}
 
 		System.out.println("Zip is created at : "+zipFile);
+	}
+
+	public static void deletePreviousReports() throws IOException {
+		File file = new File(System.getProperty("user.dir") + File.separator + "test-output" + File.separator + "screenshots");
+
+		try {
+			FileUtils.deleteDirectory(file);
+			System.out.println("Previous reports directory deleted successfully.");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,6 +1,6 @@
 Feature: [SUC:21-15] Approve Final Audit Report
 
-  @UAT_M8-21-15-01 @CREATE @boom
+  @UAT_M8-21-15-01 @CREATE
   Scenario: UAT_M8-21-15-01-UAT_M8-21-15-02-Verify the Process of  Approve Final Audit Report
     Given Open CRM URL Module as "tripscrmuser7"
     And Close Popup Window

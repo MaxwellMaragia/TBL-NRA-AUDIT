@@ -1,6 +1,6 @@
 Feature: [SUC:21-11] Approve Audit Plan
 
-  @UAT_M8-21-10-06 @CREATE @boom
+  @UAT_M8-21-10-06 @CREATE
   Scenario: UAT_M8-21-11-01-UAT_M8-21-11-02-Verify the Process of Approve Audit Plan
     Given Open CRM URL Module as "tripscrmuser7"
     And Close Popup Window

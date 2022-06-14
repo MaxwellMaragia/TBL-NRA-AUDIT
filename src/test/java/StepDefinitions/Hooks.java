@@ -30,7 +30,7 @@ public class Hooks extends BaseClass {
     @After(order=1)
     public void AfterSelenium()
     {
-//        driver.close();
+        driver.close();
         System.out.println("Completed execution for the scenario :" + scenario.getName());
     }
 
@@ -55,7 +55,6 @@ public class Hooks extends BaseClass {
             path = "./test-output/Screenshots/Passed/"+scenario.getName()+".png";
             destPath=new File(path);
             sharedatastep.passed++;
-            destPath=new File("./test-output/Screenshots/Failed/" + scenario.getName()+ strDate + ".png");
 
         }
 

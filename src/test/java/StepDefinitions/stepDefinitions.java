@@ -79,6 +79,7 @@ public class stepDefinitions extends BaseClass {
 
     @Before(order = 2)
     public void method1() throws Exception {
+
         Pro = new Properties();
         FileInputStream fls = new FileInputStream("src\\test\\resources\\global.properties");
         Pro.load(fls);
@@ -104,6 +105,7 @@ public class stepDefinitions extends BaseClass {
         ninetyfive = new WebDriverWait(driver, 95);
         onehundred = new WebDriverWait(driver, 100);
         twohundred = new WebDriverWait(driver, 200);
+
 
     }
 
@@ -136,7 +138,8 @@ public class stepDefinitions extends BaseClass {
     //---------------------------------------------------------------------Verify the Process of Assign Audit Case-----------------------------------------------------------------------------------------------//
     @Given("^Open CRM URL Module as \"([^\"]*)\"$")
     public void open_crm_url_module_as_something(String strArg1) throws Throwable {
-        driver.get("http://" + strArg1 + ":Passw0rd@10.10.3.141:5555/TripsWorkflow/main.aspx");
+//        driver.get("http://" + strArg1 + ":Passw0rd@10.10.3.141:5555/TripsWorkflow/main.aspx");
+        driver.get("http://" + strArg1 + ":Passw0rd@trips-crm:5555/TripsWorkflow/main.aspx");
     }
 
     @And("^Close Popup Window$")
@@ -208,7 +211,7 @@ public class stepDefinitions extends BaseClass {
         search.clear();
         Thread.sleep(6000);
 
-        //search.sendKeys("*AV/000033271/2021");
+//        search.sendKeys("*AV/000036395/2022");
         search.sendKeys("*"+sharedatastep.AUD_CRMARN);
         Thread.sleep(2000);
         search.sendKeys(Keys.ENTER);
@@ -482,9 +485,11 @@ public class stepDefinitions extends BaseClass {
         //Initialize data table
         List<List<String>> data = auditTable.asLists();
 
-        WebElement auditorsInput = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-audit-case-plan/div/form/div[1]/app-audit-plan-particulars/div/form/div[2]/div[2]/tb-input-text-area/div/div[2]/div/textarea"));
-        auditorsInput.sendKeys(data.get(0).get(1));
+//        WebElement auditorsInput = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-audit-case-plan/div/form/div[1]/app-audit-plan-particulars/div/form/div[2]/div[2]/tb-input-text-area/div/div[2]/div/textarea"));
+        WebElement auditorsInput = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-audit-case-plan/div/form/div[1]/app-audit-plan-particulars/div/form/div[2]/div[2]/tb-list-box/div/div[2]/div/p-listbox/div/div[2]/div/div[2]"));
+        auditorsInput.click();
 
+        Thread.sleep(1000);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement estStartDate = driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-audit-case-plan/div/form/div[1]/app-audit-plan-particulars/div/form/div[2]/div[3]/tb-date-picker[1]/div/div[2]/div/p-calendar/span/input"));
         estStartDate.sendKeys(data.get(1).get(1));
@@ -652,30 +657,29 @@ public class stepDefinitions extends BaseClass {
 
         WebElement taxTypeDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[1]/div/div[2]/div/p-dropdown/div/label")));
         taxTypeDropdown.click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
 
 //    Confirm if class names are still as is
-//        driver.findElement(By.xpath("//li[@class='ng-tns-c6-5 ui-dropdown-item ui-corner-all ui-state-highlight ng-star-inserted' and contains(., '" + data.get(0).get(1) +"')]")).click();
-        driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[1]/div/div[2]/div/p-dropdown/div/div[4]/div[2]/ul/li[4]/span")).click();
+        driver.findElement(By.xpath("//li[@class='ng-tns-c5-5 ui-dropdown-item ui-corner-all ng-star-inserted' and contains(., '" + data.get(0).get(1) +"')]")).click();
 
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         WebElement periodDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[2]/div/div[2]/div/p-dropdown/div")));
         periodDropdown.click();
-        Thread.sleep(10000);
+        Thread.sleep(1000);
 
-//        driver.findElement(By.xpath("//span[@class='ng-tns-c6-8 ng-star-inserted' and contains('" + data.get(1).get(1) +"')]")).click();
-        driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[2]/div/div[2]/div/p-dropdown/div/div[4]/div[2]/ul/li[2]")).click();
+        driver.findElement(By.xpath("//li[@class='ng-tns-c5-6 ui-dropdown-item ui-corner-all ng-star-inserted' and contains(.,'" + data.get(1).get(1) +"')]")).click();
+//        driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[2]/div/div[2]/div/p-dropdown/div/div[4]/div[2]/ul/li[1]")).click();
 
         WebElement riskAreaDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[3]/div/div[2]/div/p-dropdown/div/label")));
         riskAreaDropdown.click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
 
 //        driver.findElement(By.xpath("//li[@class='ng-tns-c7-7 ui-dropdown-item ui-corner-all ng-star-inserted' and contains(., '" + data.get(2).get(1) +"')]")).click();
         driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[3]/div/div[2]/div/p-dropdown/div/div[4]/div[2]/ul/li[2]")).click();
 
         WebElement percievedriskDropdown = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[4]/div/div[2]/div/p-dropdown/div/label")));
         percievedriskDropdown.click();
-        Thread.sleep(4000);
+        Thread.sleep(1000);
 //        driver.findElement(By.xpath("//li[@class='ng-tns-c7-8 ui-dropdown-item ui-corner-all ng-star-inserted' and contains(., '" + data.get(2).get(1) +"')]")).click();
         driver.findElement(By.xpath("/html/body/trips-app/div/app-audit/app-add-update-case-plan/div/form/div[1]/div/div/tb-dropdown[4]/div/div[2]/div/p-dropdown/div/div[4]/div[2]/ul/li[2]")).click();
 
@@ -758,7 +762,7 @@ public class stepDefinitions extends BaseClass {
         WebElement hasLoaded = driver.findElement(By.id("header_process_tbg_approvaloutcome_lock"));
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        Thread.sleep(7000);
+        Thread.sleep(3000);
         if (hasLoaded.isDisplayed()) {
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             Thread.sleep(5000);
@@ -767,7 +771,6 @@ public class stepDefinitions extends BaseClass {
             Outcome.click();
             action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).perform();
         }
-
     }
 
     @And("^clicks reject from the dropdown$")
@@ -994,7 +997,7 @@ public class stepDefinitions extends BaseClass {
 
     @And("^wait for plan to load \"([^\"]*)\"$")
     public void wait_for_duplicate_check(String strArg1) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(driver, 200);
+        WebDriverWait wait = new WebDriverWait(driver, 300);
         WebElement frame = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("WebResource_AuditApplicationAngular")));
         driver.switchTo().frame(frame);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//label[text()='" + strArg1 + "']")));

@@ -96,33 +96,33 @@ Feature: [SUC:21-14] Create Final Audit Report & [SUC:21-16] Officer's Assessmen
     Examples:
       | Addressee | Address |
       |           |         |
-
-  @UAT_M8-21-14-06 @CREATE
-#  ([SUC:21-16] Officer's Assessment)
-  Scenario Outline: UAT_M8-21-14-06-UAT_M8-21-16-01-UAT_M8-21-16-02-Verify the Process of  Officer's Assessment-Verify the Process of  Update Final Audit Report-Verify the Process of  Officer's Assessment-Verify the Process of  Maintain Officer's Assessment([SUC:21-16] Officer's Assessment)
-    Given Open CRM URL Module as "tripscrmuser8"
-    And Close Popup Window
-    And Click on Case management dropdown
-    And click on Queues
-    Then switch to frame0
-    And enters Audit reference number in search results
-#    And picks the audit case
-#    And click pick button
-    Then switch to frame0
-    Then Click on reference number
-    Then switch to frame1
-    And verifies " FINAL AUDIT REPORT " entry fields are displayed
-    When selects ASSESSMENT DETAILS
-    And clicks add assesment details button
-    When enters OFFICERS ASSESMENT details<Addressee> and <Address>
-    And clicks officers assesment submit
-    Then switch to frame1
-    And verifies " FINAL AUDIT REPORT " entry fields are displayed
-    And Click on Save button
-    Then Audit status should be "Reporting"
-    Examples:
-      | Addressee | Address  |
-      | testData  | testInfo |
+#
+#  @UAT_M8-21-14-06 @CREATE
+##  ([SUC:21-16] Officer's Assessment)
+#  Scenario Outline: UAT_M8-21-14-06-UAT_M8-21-16-01-UAT_M8-21-16-02-Verify the Process of  Officer's Assessment-Verify the Process of  Update Final Audit Report-Verify the Process of  Officer's Assessment-Verify the Process of  Maintain Officer's Assessment([SUC:21-16] Officer's Assessment)
+#    Given Open CRM URL Module as "tripscrmuser8"
+#    And Close Popup Window
+#    And Click on Case management dropdown
+#    And click on Queues
+#    Then switch to frame0
+#    And enters Audit reference number in search results
+##    And picks the audit case
+##    And click pick button
+#    Then switch to frame0
+#    Then Click on reference number
+#    Then switch to frame1
+#    And verifies " FINAL AUDIT REPORT " entry fields are displayed
+#    When selects ASSESSMENT DETAILS
+#    And clicks add assesment details button
+#    When enters OFFICERS ASSESMENT details<Addressee> and <Address>
+#    And clicks officers assesment submit
+#    Then switch to frame1
+#    And verifies " FINAL AUDIT REPORT " entry fields are displayed
+#    And Click on Save button
+#    Then Audit status should be "Reporting"
+#    Examples:
+#      | Addressee | Address  |
+#      | testData  | testInfo |
 
 
   @UAT_M8-21-12-05 @CREATE
