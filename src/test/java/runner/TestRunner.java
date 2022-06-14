@@ -4,7 +4,12 @@
 package runner;
 
 import java.io.File;
+import java.io.IOException;
 
+import StepDefinitions.sharedatastep;
+import StepDefinitions.stepDefinitions;
+import Utils.BaseClass;
+import org.apache.commons.mail.EmailException;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
@@ -25,7 +30,20 @@ import io.cucumber.junit.CucumberOptions;
 
 
 public class TestRunner{
+	public TestRunner(sharedatastep sharedata) {
 
+		stepDefinitions.sharedata = sharedata;
+
+	}
+
+	@AfterClass
+	public static void afterSuite() throws EmailException, IOException {
+		String Final_ZIP = "./Report.zip";
+		String FOLDER_TO_ZIP = "./test-output";
+		BaseClass.zip(FOLDER_TO_ZIP, Final_ZIP);
+		String output = "Tests passed = " + sharedatastep.passed + ", Tests failed = " + sharedatastep.failed;
+		BaseClass.sendMail("Test results for NRA AUDIT sanity module automation", output, Final_ZIP);
+	}
 }
 
 	

@@ -136,7 +136,7 @@ public class stepDefinitions extends BaseClass {
     //---------------------------------------------------------------------Verify the Process of Assign Audit Case-----------------------------------------------------------------------------------------------//
     @Given("^Open CRM URL Module as \"([^\"]*)\"$")
     public void open_crm_url_module_as_something(String strArg1) throws Throwable {
-        driver.get("http://" + strArg1 + ":Passw0rd@trips-crm:5555/TripsWorkflow/main.aspx");
+        driver.get("http://" + strArg1 + ":Passw0rd@10.10.3.141:5555/TripsWorkflow/main.aspx");
     }
 
     @And("^Close Popup Window$")
@@ -206,7 +206,7 @@ public class stepDefinitions extends BaseClass {
         WebElement search = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("crmGrid_findCriteria")));
 
         search.clear();
-        Thread.sleep(3000);
+        Thread.sleep(6000);
 
         //search.sendKeys("*AV/000033271/2021");
         search.sendKeys("*"+sharedatastep.AUD_CRMARN);
